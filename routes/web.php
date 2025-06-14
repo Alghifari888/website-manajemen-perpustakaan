@@ -24,8 +24,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // GRUP RUTE UNTUK ADMIN
 // ===================================
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::resource('books', AdminBookController::class);
-    Route::resource('categories', AdminCategoryController::class);
+   Route::resource('books', AdminBookController::class);
+Route::resource('categories', AdminCategoryController::class);
+Route::resource('members', \App\Http\Controllers\Admin\MemberController::class);
     // Tambahkan rute admin lainnya (manajemen anggota, laporan) di sini
 });
 

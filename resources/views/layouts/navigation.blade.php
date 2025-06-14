@@ -26,6 +26,9 @@
                         <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.*')">
                             {{ __('Manajemen Kategori') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('admin.members.index')" :active="request()->routeIs('admin.members.*')">
+        {{ __('Manajemen Anggota') }}
+    </x-nav-link>
                     </div>
                 @endif
             </div>

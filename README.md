@@ -158,3 +158,24 @@ Akun Anggota:
 Email: anggota@perpus.com
 Password: password
 Akses: Dapat login dan melihat dashboard standar.
+
+
+# 🤝 Berkontribusi
+
+1. Fork project
+2. Buat branch fitur (`git checkout -b fitur-baru`)
+3. Commit perubahan (`git commit -m 'Tambahkan fitur'`)
+4. Push ke branch (`git push origin fitur-baru`)
+5. Buat Pull Request
+
+
+## ✨ Penghargaan
+
+Dikembangkan dengan ❤ oleh [Alghifari888](https://github.com/Alghifari888)  
+💡 Terinspirasi oleh kebutuhan CMS sederhana untuk pembelajaran
+
+---
+
+⭐ Jika project ini membantu, mohon beri star di GitHub!  
+🔔 Pantau update terbaru untuk fitur-fitur baru!
+```

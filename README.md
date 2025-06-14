@@ -5,6 +5,12 @@
 ![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)
 ![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=for-the-badge&logo=php)
 
+✨ Kutipan
+"Aku tidak berilmu; yang berilmu hanyalah DIA. Jika tampak ilmu dariku, itu hanyalah pantulan dari Cahaya-Nya."
+
+## 🎥 Demo
+![Demo](./videoujicoba.gif)
+
 
 ## 📖 Daftar Isi
 1. [Deskripsi Proyek](#-deskripsi-proyek)
@@ -24,10 +30,6 @@ Sistem Manajemen Perpustakaan Digital adalah aplikasi web berbasis Laravel yang 
 - Mengelola keanggotaan perpustakaan
 - Menghasilkan laporan statistik
 
-> *"Aku tidak berilmu; yang berilmu hanyalah DIA. Jika tampak ilmu dariku, itu hanyalah pantulan dari Cahaya-Nya."*
-
-## 🎥 Demo
-[![Demo Aplikasi](./videoujicoba.gif)]
 
 ## ✨ Fitur Utama
 

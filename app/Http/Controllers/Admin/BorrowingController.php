@@ -43,13 +43,9 @@ class BorrowingController extends Controller
 
         DB::beginTransaction();
         try {
-            // 1. Ambil data buku yang akan dipinjam
             $book = Book::find($data['book_id']);
-
-            // 2. Kurangi stok buku yang tersedia
             $book->decrement('available_quantity');
 
-            // 3. Simpan data peminjaman
             Borrowing::create([
                 'user_id' => $data['user_id'],
                 'book_id' => $data['book_id'],

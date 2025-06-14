@@ -24,13 +24,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // GRUP RUTE UNTUK ADMIN
 // ===================================
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
-   Route::resource('books', AdminBookController::class);
-Route::resource('categories', AdminCategoryController::class);
-Route::resource('members', \App\Http\Controllers\Admin\MemberController::class);
-Route::post('borrowings/{borrowing}/return', [\App\Http\Controllers\Admin\BorrowingController::class, 'returnBook'])->name('borrowings.return');
-Route::resource('borrowings', \App\Http\Controllers\Admin\BorrowingController::class)->except(['show', 'edit', 'update']);
-    // Tambahkan rute admin lainnya (manajemen anggota, laporan) di sini
+    Route::resource('books', AdminBookController::class);
+    Route::resource('categories', AdminCategoryController::class);
+    Route::resource('members', \App\Http\Controllers\Admin\MemberController::class);
+    Route::post('borrowings/{borrowing}/return', [\App\Http\Controllers\Admin\BorrowingController::class, 'returnBook'])->name('borrowings.return');
+    Route::resource('borrowings', \App\Http\Controllers\Admin\BorrowingController::class)->except(['show', 'edit', 'update']);
+    Route::get('fines', [\App\Http\Controllers\Admin\FineController::class, 'index'])->name('fines.index');
+    Route::patch('fines/{fine}/pay', [\App\Http\Controllers\Admin\FineController::class, 'markAsPaid'])->name('fines.pay');
 });
+
+    // Tambahkan rute admin lainnya (manajemen anggota, laporan) di sini
+
 
 // ===================================
 // GRUP RUTE UNTUK PETUGAS

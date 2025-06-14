@@ -1,227 +1,139 @@
-# 📖 Sistem Manajemen Perpustakaan Digital v1.0 - Dokumentasi Lengkap
+Berikut perbaikan penataan README.md yang lebih rapi dan profesional dalam Bahasa Indonesia:
+
+---
+# 📚 Sistem Manajemen Perpustakaan Digital v1.0
 
 ![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)
 ![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=for-the-badge&logo=php)
+![License](https://img.shields.io/badge/Lisensi-MIT-brightgreen?style=for-the-badge)
 
-## ✨ Kutipan
+## 📖 Daftar Isi
+1. [Deskripsi Proyek](#-deskripsi-proyek)
+2. [Fitur Utama](#-fitur-utama)
+3. [Teknologi Digunakan](#-teknologi-digunakan)
+4. [Struktur Database](#-struktur-database)
+5. [Panduan Instalasi](#-panduan-instalasi)
+6. [Panduan Penggunaan](#-panduan-penggunaan)
+7. [Testing](#-testing)
+8. [Roadmap](#-roadmap)
+9. [Lisensi](#-lisensi)
+10. [Kontribusi](#-kontribusi)
+
+## 🌟 Deskripsi Proyek
+Sistem Manajemen Perpustakaan Digital adalah aplikasi web berbasis Laravel yang dirancang untuk:
+- Mengelola koleksi buku digital
+- Memproses transaksi peminjaman
+- Mengelola keanggotaan perpustakaan
+- Menghasilkan laporan statistik
 
 > *"Aku tidak berilmu; yang berilmu hanyalah DIA. Jika tampak ilmu dariku, itu hanyalah pantulan dari Cahaya-Nya."*
 
-## 🌟 Preview Aplikasi
-
-
-![Manajemen Buku](https://i.ibb.co/0jQY5Lk/Screenshot-2025-06-14-142345.png)
-*Modul Manajemen Buku - Tampilan daftar buku dengan fitur pencarian dan filter*
-
-## 📚 Daftar Isi
-
-1. [Deskripsi Proyek](#-deskripsi-proyek)
-2. [Fitur Unggulan](#-fitur-unggulan)
-3. [Arsitektur Sistem](#-arsitektur-sistem)
-4. [Struktur Database](#-struktur-database)
-5. [Panduan Instalasi](#-panduan-instalasi-lengkap)
-6. [Konfigurasi Lanjutan](#-konfigurasi-lanjutan)
-7. [Panduan Penggunaan](#-panduan-penggunaan)
-8. [Testing](#-testing-dan-qa)
-9. [Roadmap Pengembangan](#-roadmap-pengembangan)
-10. [Lisensi](#-lisensi)
-11. [Kontribusi](#-kontribusi)
-
----
-
-## 🌟 Tentang Proyek
-
-Proyek "Perpustakaan Digital" ini dibangun sebagai sebuah buku panduan interaktif. Tujuannya adalah untuk mendemonstrasikan bagaimana membangun aplikasi web skala kecil hingga menengah dengan Laravel 12, dengan fokus pada kode yang bersih, aman, *scalable*, dan mudah dipelihara.
-
-Setiap modul dirancang untuk memperkenalkan konsep-konsep Laravel secara bertahap, mulai dari dasar-dasar seperti Routing dan CRUD, hingga topik yang lebih lanjut seperti Middleware, Form Request Validation, Eager Loading, Database Transaction, dan integrasi dengan paket pihak ketiga.
-
----
+## 🎥 Demo
+[![Demo Aplikasi](./videoujicoba.gif)]
 
 ## ✨ Fitur Utama
 
-Aplikasi ini dilengkapi dengan fitur-fitur komprehensif yang dibagi berdasarkan peran pengguna.
+### 🛠️ Fitur Administrasi
+- **Manajemen Buku** (CRUD lengkap dengan upload cover)
+- **Manajemen Kategori** dengan sistem relasi
+- **Manajemen Anggota** dengan verifikasi data
+- **Sistem Peminjaman** dengan tracking status
+- **Perhitungan Denda** otomatis
 
-#### 👨‍💻 Fitur untuk Admin:
-* **Dashboard Statistik:** Menampilkan ringkasan data penting seperti buku terpopuler, anggota teraktif, dan status peminjaman.
-* **Manajemen Buku (CRUD):** Kemampuan untuk menambah, melihat, mengedit, dan menghapus data buku, termasuk mengunggah gambar sampul.
-* **Manajemen Kategori (CRUD):** Mengelola kategori buku yang berelasi dengan data buku.
-* **Manajemen Anggota (CRUD):** Mengelola data pengguna dengan peran "Anggota", termasuk profil dan foto.
-* **Manajemen Transaksi:** Memproses dan mencatat semua transaksi peminjaman dan pengembalian buku.
-* **Manajemen Denda:** Memantau denda yang belum dibayar dan menandainya sebagai "Lunas".
-* **Laporan:** Menghasilkan laporan statistik dalam bentuk halaman web dan kemampuan untuk **mengekspor ke PDF**.
+### 📊 Fitur Laporan
+- Statistik peminjaman
+- Ekspor data ke PDF
+- Riwayat transaksi
 
-#### 👤 Fitur untuk Petugas (Potensi Pengembangan):
-* Peran "Petugas" telah disiapkan dan dapat login.
-* Dapat dikembangkan untuk memiliki akses terbatas, misalnya hanya pada modul Transaksi dan Denda.
+### 👤 Manajemen Pengguna
+- Sistem role-based (Admin, Petugas, Anggota)
+- Autentikasi aman dengan Laravel Breeze
+- Profil pengguna yang dapat dikustomisasi
 
-#### 🧑 Fitur untuk Anggota:
-* Dapat login ke sistem dan melihat dashboard standar.
-* Profil pengguna yang dapat diedit (nama, email, foto profil).
-* Dapat dikembangkan untuk melihat riwayat peminjaman pribadi dan katalog buku.
-
-#### ⚙️ Fitur Umum:
-* **Sistem Autentikasi:** Registrasi dan login yang aman menggunakan Laravel Breeze.
-* **Manajemen Peran & Hak Akses:** Pembatasan akses ke halaman dan fitur tertentu berdasarkan peran (Admin, Petugas, Anggota) menggunakan Middleware.
-* **Desain Responsif:** Tampilan yang beradaptasi dengan baik di berbagai ukuran layar, dari desktop hingga mobile, menggunakan Tailwind CSS.
-* **Validasi Form:** Validasi data yang kuat dan aman di sisi server menggunakan Form Request class.
-
----
-
-## 🛠️ Struktur Teknologi
-
-Proyek ini dibangun menggunakan ekosistem dan teknologi modern:
-
-* **Framework:** Laravel 12
-* **Bahasa:** PHP 8.2+
-* **Frontend:** Blade Templates, Tailwind CSS, Alpine.js
-* **Database:** MySQL
-* **Sistem Autentikasi:** Laravel Breeze
-* **PDF Generation:** `barryvdh/laravel-dompdf`
-
----
+## 🛠️ Teknologi Digunakan
+| Komponen | Teknologi |
+|----------|-----------|
+| Backend  | Laravel 12, PHP 8.2+ |
+| Frontend | Blade, Tailwind CSS, Alpine.js |
+| Database | MySQL |
+| Lainnya  | Laravel Breeze, DomPDF |
 
 ## 🗃️ Struktur Database
+![Diagram ERD](https://i.ibb.co/0jQY5Lk/Screenshot-2025-06-14-142345.png)
 
-### 📊 Diagram ERD
 ```mermaid
 erDiagram
-    USERS {
-        bigint id PK
-        string name
-        string email UK
-        string password
-        string role
-        timestamp created_at
-        timestamp updated_at
-    }
-    USER_PROFILES {
-        bigint user_id PK, FK
-        string nis_nim UK
-        text address
-        string phone_number
-        string profile_photo_path
-    }
-    CATEGORIES {
-        bigint id PK
-        string name UK
-        string slug UK
-    }
-    BOOKS {
-        bigint id PK
-        bigint category_id FK
-        string title
-        string author
-        integer stock_quantity
-        integer available_quantity
-    }
-    BORROWINGS {
-        bigint id PK
-        bigint user_id FK
-        bigint book_id FK
-        timestamp borrowed_at
-        timestamp due_at
-        timestamp returned_at
-        string status
-    }
-    FINES {
-        bigint id PK
-        bigint borrowing_id FK
-        bigint user_id FK
-        decimal amount
-        string status
-    }
-    USERS ||--o{ USER_PROFILES : "has one"
-    USERS ||--o{ BORROWINGS : "borrows"
-    USERS ||--o{ FINES : "has"
-    BOOKS ||--|{ CATEGORIES : "belongs to"
-    BOOKS ||--o{ BORROWROWINGS : "is part of"
-    BORROWINGS ||--o{ FINES : "can result in"
-🚀 Panduan Instalasi
-Ikuti langkah-langkah berikut untuk menjalankan proyek ini di lingkungan lokal Anda.
+    USERS ||--o{ USER_PROFILES : "has"
+    USERS ||--o{ BORROWINGS : "makes"
+    BOOKS ||--o{ BORROWINGS : "included_in"
+    BORROWINGS ||--o{ FINES : "generates"
+```
 
-Prasyarat
-PHP >= 8.2
-Composer
-Node.js & NPM
-Database Server (misal: MySQL, MariaDB)
-Langkah-langkah Instalasi
-Clone repositori ini:
+## 🚀 Panduan Instalasi
 
-Bash
+### Prasyarat
+- PHP 8.2+
+- Composer
+- Node.js 16+
+- MySQL 5.7+
 
-git clone [https://github.com/NAMA_USER_ANDA/NAMA_REPO_ANDA.git](https://github.com/NAMA_USER_ANDA/NAMA_REPO_ANDA.git)
-cd NAMA_REPO_ANDA
-Install dependensi PHP:
+### Langkah-langkah
+1. Clone repositori:
+   ```bash
+   git clone https://github.com/username/repo.git
+   cd repo
+   ```
 
-Bash
+2. Install dependencies:
+   ```bash
+   composer install
+   npm install
+   ```
 
-composer install
-Siapkan file lingkungan (.env):
+3. Setup environment:
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-Bash
+4. Konfigurasi database di `.env`
 
-cp .env.example .env
-Generate kunci aplikasi:
+5. Jalankan migrasi:
+   ```bash
+   php artisan migrate --seed
+   ```
 
-Bash
+6. Jalankan aplikasi:
+   ```bash
+   php artisan serve
+   npm run dev
+   ```
 
-php artisan key:generate
-Konfigurasi database Anda di file .env:
+## 🔑 Panduan Penggunaan
+### Akun Default
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | admin@perpus.com | password |
+| Petugas | petugas@perpus.com | password |
+| Anggota | anggota@perpus.com | password |
 
-Cuplikan kode
+## 🧪 Testing
+Jalankan test suite dengan:
+```bash
+php artisan test
+```
 
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=db_perpustakaan
-DB_USERNAME=root
-DB_PASSWORD=
-Pastikan Anda sudah membuat database db_perpustakaan di server database Anda.
+## 🗺️ Roadmap
+- [ ] Integrasi pembayaran digital
+- [ ] Notifikasi email
+- [ ] API untuk mobile app
 
-Jalankan migrasi dan seeder database:
-Perintah ini akan membuat semua tabel dan mengisinya dengan data awal (termasuk akun admin, petugas, dan anggota).
+## 📜 Lisensi
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).
 
-Bash
+## 🤝 Kontribusi
+Silakan buka issue atau pull request untuk berkontribusi.
 
-php artisan migrate --seed
-Buat symbolic link untuk storage:
-Ini penting agar file yang di-upload (seperti sampul buku) bisa diakses.
+---
 
-Bash
-
-php artisan storage:link
-Install dependensi frontend (Node.js):
-
-Bash
-
-npm install
-Jalankan server pengembangan:
-
-Buka satu terminal dan jalankan Vite untuk kompilasi aset:
-Bash
-
-npm run dev
-Buka terminal kedua dan jalankan server aplikasi Laravel:
-Bash
-
-php artisan serve
-Selesai! Aplikasi Anda sekarang berjalan di http://127.0.0.1:8000.
-
-🔑 Cara Penggunaan
-Setelah instalasi berhasil, Anda dapat login menggunakan akun default yang telah dibuat oleh seeder:
-
-Akun Admin:
-
-Email: admin@perpus.com
-Password: password
-Akses: Memiliki akses ke semua fitur manajemen.
-Akun Petugas:
-
-Email: petugas@perpus.com
-Password: password
-Akses: Dapat login, namun belum memiliki menu khusus (dapat dikembangkan lebih lanjut).
-Akun Anggota:
-
-Email: anggota@perpus.com
-Password: password
-Akses: Dapat login dan melihat dashboard standar.
+Dokumentasi ini terakhir diperbarui pada 15 Juni 2025.

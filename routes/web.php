@@ -27,11 +27,18 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('books', AdminBookController::class);
     Route::resource('categories', AdminCategoryController::class);
     Route::resource('members', \App\Http\Controllers\Admin\MemberController::class);
+    
     Route::post('borrowings/{borrowing}/return', [\App\Http\Controllers\Admin\BorrowingController::class, 'returnBook'])->name('borrowings.return');
     Route::resource('borrowings', \App\Http\Controllers\Admin\BorrowingController::class)->except(['show', 'edit', 'update']);
+
     Route::get('fines', [\App\Http\Controllers\Admin\FineController::class, 'index'])->name('fines.index');
     Route::patch('fines/{fine}/pay', [\App\Http\Controllers\Admin\FineController::class, 'markAsPaid'])->name('fines.pay');
+    
+    // Pastikan dua baris ini ada DI DALAM group
+    Route::get('reports', [\App\Http\Controllers\Admin\ReportController::class, 'index'])->name('reports.index');
+    Route::get('reports/export-pdf', [\App\Http\Controllers\Admin\ReportController::class, 'exportPdf'])->name('reports.export.pdf');
 });
+
 
     // Tambahkan rute admin lainnya (manajemen anggota, laporan) di sini
 

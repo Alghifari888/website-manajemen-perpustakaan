@@ -29,4 +29,14 @@ class Fine extends Model
     {
         return $this->belongsTo(Borrowing::class);
     }
+
+    /**
+     * TAMBAHKAN FUNGSI INI
+     * Mendefinisikan relasi bahwa setiap denda (Fine)
+     * "milik" satu Pengguna (User).
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

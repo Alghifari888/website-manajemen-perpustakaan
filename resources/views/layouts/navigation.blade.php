@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                      <x-nav-link :href="route('admin.borrowings.index')" :active="request()->routeIs('admin.borrowings.*')">
+        {{ __('Transaksi Pinjam') }}
+    </x-nav-link>
                 </div>
 
                 {{-- Tambahkan link Manajemen Buku dan Kategori untuk admin --}}

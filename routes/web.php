@@ -27,6 +27,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
    Route::resource('books', AdminBookController::class);
 Route::resource('categories', AdminCategoryController::class);
 Route::resource('members', \App\Http\Controllers\Admin\MemberController::class);
+Route::post('borrowings/{borrowing}/return', [\App\Http\Controllers\Admin\BorrowingController::class, 'returnBook'])->name('borrowings.return');
+Route::resource('borrowings', \App\Http\Controllers\Admin\BorrowingController::class)->except(['show', 'edit', 'update']);
     // Tambahkan rute admin lainnya (manajemen anggota, laporan) di sini
 });
 

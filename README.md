@@ -90,50 +90,70 @@ erDiagram
    npm install
    ```
 
-3. Setup environment:
-   ```bash
-   cp .env.example .env
-   php artisan key:generate
-   ```
+Bash
 
-4. Konfigurasi database di `.env`
+cp .env.example .env
+Generate kunci aplikasi:
 
-5. Jalankan migrasi:
-   ```bash
-   php artisan migrate --seed
-   ```
+Bash
 
-6. Jalankan aplikasi:
-   ```bash
-   php artisan serve
-   npm run dev
-   ```
+php artisan key:generate
+Konfigurasi database Anda di file .env:
 
-## 🔑 Panduan Penggunaan
-### Akun Default
-| Role | Email | Password |
-|------|-------|----------|
-| Admin | admin@perpus.com | password |
-| Petugas | petugas@perpus.com | password |
-| Anggota | anggota@perpus.com | password |
+Cuplikan kode
 
-## 🧪 Testing
-Jalankan test suite dengan:
-```bash
-php artisan test
-```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=db_perpustakaan
+DB_USERNAME=root
+DB_PASSWORD=
+Pastikan Anda sudah membuat database db_perpustakaan di server database Anda.
 
-## 🗺️ Roadmap
-- [ ] Integrasi pembayaran digital
-- [ ] Notifikasi email
-- [ ] API untuk mobile app
+Jalankan migrasi dan seeder database:
+Perintah ini akan membuat semua tabel dan mengisinya dengan data awal (termasuk akun admin, petugas, dan anggota).
 
-## 📜 Lisensi
-Proyek ini dilisensikan di bawah [MIT License](LICENSE).
+Bash
 
-## 🤝 Kontribusi
-Silakan buka issue atau pull request untuk berkontribusi.
+php artisan migrate --seed
+Buat symbolic link untuk storage:
+Ini penting agar file yang di-upload (seperti sampul buku) bisa diakses.
 
----
+Bash
 
-Dokumentasi ini terakhir diperbarui pada 15 Juni 2025.
+php artisan storage:link
+Install dependensi frontend (Node.js):
+
+Bash
+
+npm install
+Jalankan server pengembangan:
+
+Buka satu terminal dan jalankan Vite untuk kompilasi aset:
+Bash
+
+npm run dev
+Buka terminal kedua dan jalankan server aplikasi Laravel:
+Bash
+
+php artisan serve
+Selesai! Aplikasi Anda sekarang berjalan di http://127.0.0.1:8000.
+
+🔑 Cara Penggunaan
+Setelah instalasi berhasil, Anda dapat login menggunakan akun default yang telah dibuat oleh seeder:
+
+Akun Admin:
+
+Email: admin@perpus.com
+Password: password
+Akses: Memiliki akses ke semua fitur manajemen.
+Akun Petugas:
+
+Email: petugas@perpus.com
+Password: password
+Akses: Dapat login, namun belum memiliki menu khusus (dapat dikembangkan lebih lanjut).
+Akun Anggota:
+
+Email: anggota@perpus.com
+Password: password
+Akses: Dapat login dan melihat dashboard standar.

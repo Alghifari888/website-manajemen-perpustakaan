@@ -2,14 +2,13 @@
 
 ![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)
 ![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=for-the-badge&logo=php)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css)
-![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
-![Status Proyek](https://img.shields.io/badge/Status-Produksi%20Ready-brightgreen?style=for-the-badge)
+
+## ✨ Kutipan
+
+> *"Aku tidak berilmu; yang berilmu hanyalah DIA. Jika tampak ilmu dariku, itu hanyalah pantulan dari Cahaya-Nya."*
 
 ## 🌟 Preview Aplikasi
 
-![Tampilan Dashboard Admin](https://i.ibb.co/L5w2R7x/Screenshot-2025-06-14-142218.png)
-*Dashboard Admin - Tampilan statistik dan ringkasan aktivitas*
 
 ![Manajemen Buku](https://i.ibb.co/0jQY5Lk/Screenshot-2025-06-14-142345.png)
 *Modul Manajemen Buku - Tampilan daftar buku dengan fitur pencarian dan filter*

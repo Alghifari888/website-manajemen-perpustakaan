@@ -1,11 +1,10 @@
-Berikut perbaikan penataan README.md yang lebih rapi dan profesional dalam Bahasa Indonesia:
 
 ---
 # 📚 Sistem Manajemen Perpustakaan Digital v1.0
 
 ![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)
 ![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=for-the-badge&logo=php)
-![License](https://img.shields.io/badge/Lisensi-MIT-brightgreen?style=for-the-badge)
+
 
 ## 📖 Daftar Isi
 1. [Deskripsi Proyek](#-deskripsi-proyek)
@@ -16,8 +15,7 @@ Berikut perbaikan penataan README.md yang lebih rapi dan profesional dalam Bahas
 6. [Panduan Penggunaan](#-panduan-penggunaan)
 7. [Testing](#-testing)
 8. [Roadmap](#-roadmap)
-9. [Lisensi](#-lisensi)
-10. [Kontribusi](#-kontribusi)
+9. [Kontribusi](#-kontribusi)
 
 ## 🌟 Deskripsi Proyek
 Sistem Manajemen Perpustakaan Digital adalah aplikasi web berbasis Laravel yang dirancang untuk:
@@ -147,11 +145,12 @@ Akun Admin:
 Email: admin@perpus.com
 Password: password
 Akses: Memiliki akses ke semua fitur manajemen.
+
 Akun Petugas:
 
 Email: petugas@perpus.com
 Password: password
-Akses: Dapat login, namun belum memiliki menu khusus (dapat dikembangkan lebih lanjut).
+
 Akun Anggota:
 
 Email: anggota@perpus.com

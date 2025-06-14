@@ -1,27 +1,31 @@
-# 📖 Sistem Manajemen Perpustakaan Digital v1.0
+# 📖 Sistem Manajemen Perpustakaan Digital v1.0 - Dokumentasi Lengkap
 
 ![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)
 ![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=for-the-badge&logo=php)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css)
-![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 
-Repositori ini berisi kode sumber lengkap untuk aplikasi **Sistem Manajemen Perpustakaan Digital** yang dibangun dari nol menggunakan **Laravel 12**. Proyek ini dirancang sebagai studi kasus nyata untuk mempelajari arsitektur, praktik terbaik, dan fitur-fitur modern dari framework Laravel.
+## ✨ Kutipan
 
-Aplikasi ini mencakup semua fungsionalitas inti yang dibutuhkan oleh sebuah perpustakaan, mulai dari manajemen koleksi buku, pengelolaan anggota, hingga sistem transaksi peminjaman, pengembalian, dan denda.
+> *"Aku tidak berilmu; yang berilmu hanyalah DIA. Jika tampak ilmu dariku, itu hanyalah pantulan dari Cahaya-Nya."*
 
-![Tampilan Aplikasi Perpustakaan](https://i.ibb.co/L5w2R7x/Screenshot-2025-06-14-142218.png)
+## 🌟 Preview Aplikasi
 
----
+
+![Manajemen Buku](https://i.ibb.co/0jQY5Lk/Screenshot-2025-06-14-142345.png)
+*Modul Manajemen Buku - Tampilan daftar buku dengan fitur pencarian dan filter*
 
 ## 📚 Daftar Isi
 
-1.  [Tentang Proyek](#-tentang-proyek)
-2.  [Fitur Utama](#-fitur-utama)
-3.  [Struktur Teknologi](#-struktur-teknologi)
-4.  [Diagram Relasi Database (ERD)](#-diagram-relasi-database-erd)
-5.  [Panduan Instalasi](#-panduan-instalasi)
-6.  [Cara Penggunaan](#-cara-penggunaan)
-7.  [Lisensi](#-lisensi)
+1. [Deskripsi Proyek](#-deskripsi-proyek)
+2. [Fitur Unggulan](#-fitur-unggulan)
+3. [Arsitektur Sistem](#-arsitektur-sistem)
+4. [Struktur Database](#-struktur-database)
+5. [Panduan Instalasi](#-panduan-instalasi-lengkap)
+6. [Konfigurasi Lanjutan](#-konfigurasi-lanjutan)
+7. [Panduan Penggunaan](#-panduan-penggunaan)
+8. [Testing](#-testing-dan-qa)
+9. [Roadmap Pengembangan](#-roadmap-pengembangan)
+10. [Lisensi](#-lisensi)
+11. [Kontribusi](#-kontribusi)
 
 ---
 
@@ -67,19 +71,18 @@ Aplikasi ini dilengkapi dengan fitur-fitur komprehensif yang dibagi berdasarkan 
 
 Proyek ini dibangun menggunakan ekosistem dan teknologi modern:
 
-- **Framework:** Laravel 12
-- **Bahasa:** PHP 8.2+
-- **Frontend:** Blade Templates, Tailwind CSS, Alpine.js
-- **Database:** MySQL
-- **Sistem Autentikasi:** Laravel Breeze
-- **PDF Generation:** `barryvdh/laravel-dompdf`
+* **Framework:** Laravel 12
+* **Bahasa:** PHP 8.2+
+* **Frontend:** Blade Templates, Tailwind CSS, Alpine.js
+* **Database:** MySQL
+* **Sistem Autentikasi:** Laravel Breeze
+* **PDF Generation:** `barryvdh/laravel-dompdf`
 
 ---
 
-## Diagram Relasi Database (ERD)
+## 🗃️ Struktur Database
 
-Struktur database dirancang untuk menormalkan data dan memastikan integritas relasional.
-
+### 📊 Diagram ERD
 ```mermaid
 erDiagram
     USERS {
@@ -131,7 +134,7 @@ erDiagram
     USERS ||--o{ BORROWINGS : "borrows"
     USERS ||--o{ FINES : "has"
     BOOKS ||--|{ CATEGORIES : "belongs to"
-    BOOKS ||--o{ BORROWINGS : "is part of"
+    BOOKS ||--o{ BORROWROWINGS : "is part of"
     BORROWINGS ||--o{ FINES : "can result in"
 🚀 Panduan Instalasi
 Ikuti langkah-langkah berikut untuk menjalankan proyek ini di lingkungan lokal Anda.
@@ -146,7 +149,7 @@ Clone repositori ini:
 
 Bash
 
-git clone https://github.com/NAMA_USER_ANDA/NAMA_REPO_ANDA.git
+git clone [https://github.com/NAMA_USER_ANDA/NAMA_REPO_ANDA.git](https://github.com/NAMA_USER_ANDA/NAMA_REPO_ANDA.git)
 cd NAMA_REPO_ANDA
 Install dependensi PHP:
 
@@ -173,7 +176,7 @@ DB_PORT=3306
 DB_DATABASE=db_perpustakaan
 DB_USERNAME=root
 DB_PASSWORD=
-Catatan: Pastikan Anda sudah membuat database db_perpustakaan di server database Anda.
+Pastikan Anda sudah membuat database db_perpustakaan di server database Anda.
 
 Jalankan migrasi dan seeder database:
 Perintah ini akan membuat semua tabel dan mengisinya dengan data awal (termasuk akun admin, petugas, dan anggota).
@@ -222,6 +225,3 @@ Akun Anggota:
 Email: anggota@perpus.com
 Password: password
 Akses: Dapat login dan melihat dashboard standar.
-
-
-

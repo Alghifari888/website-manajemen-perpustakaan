@@ -67,12 +67,12 @@ Aplikasi ini dilengkapi dengan fitur-fitur komprehensif yang dibagi berdasarkan 
 
 Proyek ini dibangun menggunakan ekosistem dan teknologi modern:
 
-* **Framework:** Laravel 12
-* **Bahasa:** PHP 8.2+
-* **Frontend:** Blade Templates, Tailwind CSS, Alpine.js
-* **Database:** MySQL
-* **Sistem Autentikasi:** Laravel Breeze
-* **PDF Generation:** `barryvdh/laravel-dompdf`
+- **Framework:** Laravel 12
+- **Bahasa:** PHP 8.2+
+- **Frontend:** Blade Templates, Tailwind CSS, Alpine.js
+- **Database:** MySQL
+- **Sistem Autentikasi:** Laravel Breeze
+- **PDF Generation:** `barryvdh/laravel-dompdf`
 
 ---
 
@@ -131,7 +131,7 @@ erDiagram
     USERS ||--o{ BORROWINGS : "borrows"
     USERS ||--o{ FINES : "has"
     BOOKS ||--|{ CATEGORIES : "belongs to"
-    BOOKS ||--o{ BORROWROWINGS : "is part of"
+    BOOKS ||--o{ BORROWINGS : "is part of"
     BORROWINGS ||--o{ FINES : "can result in"
 🚀 Panduan Instalasi
 Ikuti langkah-langkah berikut untuk menjalankan proyek ini di lingkungan lokal Anda.
@@ -146,7 +146,7 @@ Clone repositori ini:
 
 Bash
 
-git clone [https://github.com/NAMA_USER_ANDA/NAMA_REPO_ANDA.git](https://github.com/NAMA_USER_ANDA/NAMA_REPO_ANDA.git)
+git clone https://github.com/NAMA_USER_ANDA/NAMA_REPO_ANDA.git
 cd NAMA_REPO_ANDA
 Install dependensi PHP:
 
@@ -173,7 +173,7 @@ DB_PORT=3306
 DB_DATABASE=db_perpustakaan
 DB_USERNAME=root
 DB_PASSWORD=
-Pastikan Anda sudah membuat database db_perpustakaan di server database Anda.
+Catatan: Pastikan Anda sudah membuat database db_perpustakaan di server database Anda.
 
 Jalankan migrasi dan seeder database:
 Perintah ini akan membuat semua tabel dan mengisinya dengan data awal (termasuk akun admin, petugas, dan anggota).
@@ -222,3 +222,6 @@ Akun Anggota:
 Email: anggota@perpus.com
 Password: password
 Akses: Dapat login dan melihat dashboard standar.
+
+
+

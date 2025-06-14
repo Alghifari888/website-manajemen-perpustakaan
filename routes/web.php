@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 
 // Halaman utama untuk tamu (tidak perlu login)
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 // Grup rute untuk semua pengguna yang sudah terautentikasi

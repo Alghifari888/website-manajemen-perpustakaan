@@ -253,11 +253,6 @@ php artisan dusk
 - [ ] Mobile app dengan React Native
 
 ---
-
-## 📜 Lisensi
-
-Proyek ini dilisensikan di bawah [MIT License](LICENSE).
-
 ---
 
 ## 🤝 Kontribusi

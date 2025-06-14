@@ -243,15 +243,6 @@ php artisan dusk
 ```
 
 ---
-
-## 🛣️ Roadmap Pengembangan
-
-### 🚧 Rencana Versi Berikutnya
-- [ ] Integrasi pembayaran denda online
-- [ ] Sistem rating dan ulasan buku
-- [ ] Pencarian buku dengan Elasticsearch
-- [ ] Mobile app dengan React Native
-
 ---
 ---
 

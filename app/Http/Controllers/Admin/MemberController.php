@@ -108,7 +108,6 @@ class MemberController extends Controller
                 $profileData['profile_photo_path'] = $request->file('profile_photo')->store('profile-photos', 'public');
             }
 
-            // 4. Gunakan updateOrCreate untuk handle user yang mungkin belum punya profile
             $member->profile()->updateOrCreate(['user_id' => $member->id], $profileData);
 
             DB::commit();
@@ -123,12 +122,10 @@ class MemberController extends Controller
 
     public function destroy(User $member)
     {
-        // Hapus foto profile dari storage terlebih dahulu
         if ($member->profile && $member->profile->profile_photo_path) {
             Storage::disk('public')->delete($member->profile->profile_photo_path);
         }
         
-        // Menghapus user akan otomatis menghapus profile karena onDelete('cascade')
         $member->delete();
 
         return redirect()->route('admin.members.index')->with('success', 'Anggota berhasil dihapus.');

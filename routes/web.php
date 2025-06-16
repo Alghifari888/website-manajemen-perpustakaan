@@ -32,7 +32,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('borrowings', \App\Http\Controllers\Admin\BorrowingController::class)->except(['show', 'edit', 'update']);
 
     Route::get('fines', [\App\Http\Controllers\Admin\FineController::class, 'index'])->name('fines.index');
-    Route::patch('fines/{fine}/pay', [\App\Http\Controllers\Admin\FineController::class, 'markAsPaid'])->name('fines.pay');
+Route::patch('fines/{fine}/pay', [\App\Http\Controllers\Admin\FineController::class, 'markAsPaid'])->name('fines.pay');
+
     
     // Pastikan dua baris ini ada DI DALAM group
     Route::get('reports', [\App\Http\Controllers\Admin\ReportController::class, 'index'])->name('reports.index');

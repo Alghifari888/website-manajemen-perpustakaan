@@ -8,7 +8,7 @@ use App\Models\UserProfile;
 use App\Enums\UserRole;
 use App\Http\Requests\Admin\MemberStoreRequest;
 use App\Http\Requests\Admin\MemberUpdateRequest;
-use Illuminate\Http\Request; // <-- Tambahkan ini
+use Illuminate\Http\Request; // <-- use statement penting
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -78,7 +78,6 @@ class MemberController extends Controller
 
     public function edit(User $member)
     {
-        // Pastikan kita mengambil user dengan profilenya
         $member->load('profile');
         return view('admin.members.edit', compact('member'));
     }
@@ -89,29 +88,24 @@ class MemberController extends Controller
 
         DB::beginTransaction();
         try {
-            // 1. Update data di tabel user
             $member->update([
                 'name' => $data['name'],
                 'email' => $data['email'],
             ]);
 
-            // 2. Siapkan data profile
             $profileData = [
                 'nis_nim' => $data['nis_nim'],
                 'phone_number' => $data['phone_number'],
                 'address' => $data['address'],
             ];
 
-            // 3. Handle upload foto profile jika ada yang baru
             if ($request->hasFile('profile_photo')) {
-                // Hapus foto lama jika ada
                 if ($member->profile && $member->profile->profile_photo_path) {
                     Storage::disk('public')->delete($member->profile->profile_photo_path);
                 }
                 $profileData['profile_photo_path'] = $request->file('profile_photo')->store('profile-photos', 'public');
             }
 
-            // 4. Gunakan updateOrCreate untuk handle user yang mungkin belum punya profile
             $member->profile()->updateOrCreate(['user_id' => $member->id], $profileData);
 
             DB::commit();
@@ -126,12 +120,10 @@ class MemberController extends Controller
 
     public function destroy(User $member)
     {
-        // Hapus foto profile dari storage terlebih dahulu
         if ($member->profile && $member->profile->profile_photo_path) {
             Storage::disk('public')->delete($member->profile->profile_photo_path);
         }
         
-        // Menghapus user akan otomatis menghapus profile karena onDelete('cascade')
         $member->delete();
 
         return redirect()->route('admin.members.index')->with('success', 'Anggota berhasil dihapus.');

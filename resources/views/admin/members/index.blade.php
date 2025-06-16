@@ -32,11 +32,10 @@
                     <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                <tr>                                       
+                                <tr>
                                     <th scope="col" class="py-3 px-6">Foto</th>
                                     <th scope="col" class="py-3 px-6">Nama</th>
                                     <th scope="col" class="py-3 px-6">Email</th>
-                                    {{-- TAMBAHKAN DUA KOLOM INI --}}
                                     <th scope="col" class="py-3 px-6">No. Telepon</th>
                                     <th scope="col" class="py-3 px-6">Alamat</th>
                                     <th scope="col" class="py-3 px-6">NIS/NIM</th>
@@ -51,7 +50,6 @@
                                         </td>
                                         <td class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $member->name }}</td>
                                         <td class="py-4 px-6">{{ $member->email }}</td>
-                                        {{-- TAMBAHKAN DUA KOLOM INI --}}
                                         <td class="py-4 px-6">{{ $member->profile?->phone_number ?? '-' }}</td>
                                         <td class="py-4 px-6">{{ Str::limit($member->profile?->address, 30) ?? '-' }}</td>
                                         <td class="py-4 px-6">{{ $member->profile?->nis_nim ?? '-' }}</td>
@@ -67,7 +65,6 @@
                                         </td>
                                     </tr>
                                 @empty
-                                    {{-- Jangan lupa ubah colspan agar sesuai dengan jumlah kolom baru --}}
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td colspan="7" class="py-4 px-6 text-center">
                                             Tidak ada data anggota ditemukan.

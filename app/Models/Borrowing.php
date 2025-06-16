@@ -20,14 +20,11 @@ class Borrowing extends Model
     ];
 
     // Casting untuk memastikan tipe data benar
-    protected function casts(): array
-    {
-        return [
-            'borrowed_at' => 'datetime',
-            'due_at' => 'datetime',
-            'returned_at' => 'datetime',
-        ];
-    }
+    protected $casts = [
+        'borrowed_at' => 'datetime',
+        'due_at' => 'datetime',
+        'returned_at' => 'datetime',
+    ];
 
     // Relasi ke User (Peminjam)
     public function user()
@@ -53,3 +50,4 @@ class Borrowing extends Model
         return $this->hasOne(Fine::class);
     }
 }
+

@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use App\Models\Fine;
 use Illuminate\Http\Request;
@@ -9,10 +11,15 @@ class FineController extends Controller
 {
     public function index()
     {
-        $fines = Fine::with(['user', 'borrowing.book'])
+        // ====================================================
+        // ==> PERUBAHAN UTAMA ADA DI SINI <==
+        // ====================================================
+        // Kita hanya akan mengambil denda yang statusnya 'belum_dibayar'.
+        $fines = Fine::where('status', 'belum_dibayar')
+                    ->with(['user', 'borrowing.book'])
                     ->latest()
                     ->paginate(15);
-
+        
         return view('admin.fines.index', compact('fines'));
     }
 

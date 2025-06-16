@@ -15,9 +15,9 @@
                         </a>
                     </div>
 
-                    {{-- ======================================================= --}}
-                    {{-- ==> TAMBAHKAN BLOK FORM PENCARIAN & FILTER DI SINI <== --}}
-                    {{-- ======================================================= --}}
+                   
+                    {{-- ==>BLOK FORM PENCARIAN & FILTER DI SINI <== --}}
+                   
                     <form method="GET" action="{{ route('admin.books.index') }}" class="mb-6">
                         <div class="flex flex-col md:flex-row gap-4">
                             {{-- Input Pencarian --}}

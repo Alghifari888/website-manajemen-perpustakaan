@@ -15,6 +15,48 @@
                         </a>
                     </div>
 
+                    {{-- ======================================================= --}}
+                    {{-- ==> TAMBAHKAN BLOK FORM PENCARIAN & FILTER DI SINI <== --}}
+                    {{-- ======================================================= --}}
+                    <form method="GET" action="{{ route('admin.books.index') }}" class="mb-6">
+                        <div class="flex flex-col md:flex-row gap-4">
+                            {{-- Input Pencarian --}}
+                            <div class="flex-grow">
+                                <x-input-label for="search" :value="__('Cari Judul / Penulis')" class="sr-only"/>
+                                <x-text-input id="search" name="search" type="text" class="block w-full"
+                                              placeholder="Cari berdasarkan judul atau penulis..."
+                                              :value="request('search')" />
+                            </div>
+                            
+                            {{-- Dropdown Kategori --}}
+                            <div>
+                                <x-input-label for="category_id" :value="__('Filter Kategori')" class="sr-only"/>
+                                <select name="category_id" id="category_id" class="block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                                    <option value="">Semua Kategori</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            {{-- Tombol Aksi --}}
+                            <div class="flex items-center">
+                                <x-primary-button type="submit">
+                                    Cari
+                                </x-primary-button>
+                                <a href="{{ route('admin.books.index') }}" class="ms-3 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">
+                                    Reset
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+
+
+
+
+
                     @if (session('success'))
                         <div class="mb-4 p-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
                             {{ session('success') }}

@@ -4,25 +4,50 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
-use App\Models\Category;
+use App\Models\Category; // Pastikan model Category sudah ada
 use App\Http\Requests\Admin\BookStoreRequest;
 use App\Http\Requests\Admin\BookUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+
 class BookController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $books = Book::with('category')->latest()->paginate(10);
-        return view('admin.books.index', compact('books'));
+        // Mulai query dengan eager loading relasi kategori
+        $query = Book::with('category');
+
+        // 1. Logika untuk PENCARIAN
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('author', 'like', "%{$search}%");
+            });
+        }
+
+        // 2. Logika untuk FILTER KATEGORI
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->input('category_id'));
+        }
+
+        // Ambil hasil query dengan paginasi
+        $books = $query->latest()->paginate(10);
+        
+        // Ambil semua kategori untuk dropdown filter
+        $categories = Category::all();
+
+        return view('admin.books.index', compact('books', 'categories'));
     }
 
-    public function create()
-    {
-        $categories = Category::all();
-        return view('admin.books.create', compact('categories'));
-    }
+
+
+
+
+
+
+
 
     public function store(BookStoreRequest $request)
     {

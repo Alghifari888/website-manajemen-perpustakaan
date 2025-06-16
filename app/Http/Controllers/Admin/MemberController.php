@@ -8,19 +8,30 @@ use App\Models\UserProfile;
 use App\Enums\UserRole;
 use App\Http\Requests\Admin\MemberStoreRequest;
 use App\Http\Requests\Admin\MemberUpdateRequest;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; // <-- Tambahkan ini
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class MemberController extends Controller
 {
-    public function index()
+    public function index(Request $request) // <-- Tambahkan Request $request
     {
-        $members = User::where('role', UserRole::MEMBER)
-                        ->with('profile') // Eager loading relasi profile
-                        ->latest()
-                        ->paginate(10);
+        // Mulai query dengan eager loading
+        $query = User::where('role', UserRole::MEMBER)->with('profile');
+
+        // Terapkan filter pencarian jika ada
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%");
+            });
+        }
+
+        // Ambil hasil dengan paginasi
+        $members = $query->latest()->paginate(10);
+
         return view('admin.members.index', compact('members'));
     }
 
@@ -33,10 +44,8 @@ class MemberController extends Controller
     {
         $data = $request->validated();
 
-        // Gunakan DB Transaction untuk memastikan konsistensi data
         DB::beginTransaction();
         try {
-            // 1. Buat data user
             $user = User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
@@ -44,7 +53,6 @@ class MemberController extends Controller
                 'role' => UserRole::MEMBER,
             ]);
 
-            // 2. Siapkan data profile
             $profileData = [
                 'user_id' => $user->id,
                 'nis_nim' => $data['nis_nim'],
@@ -52,23 +60,18 @@ class MemberController extends Controller
                 'address' => $data['address'],
             ];
 
-            // 3. Handle upload foto profile jika ada
             if ($request->hasFile('profile_photo')) {
                 $profileData['profile_photo_path'] = $request->file('profile_photo')->store('profile-photos', 'public');
             }
             
-            // 4. Buat data user profile
             UserProfile::create($profileData);
 
-            // Jika semua berhasil, commit transaksi
             DB::commit();
 
             return redirect()->route('admin.members.index')->with('success', 'Anggota baru berhasil ditambahkan.');
 
         } catch (\Exception $e) {
-            // Jika ada error, rollback semua query
             DB::rollBack();
-            // Optional: log error message $e->getMessage()
             return back()->with('error', 'Terjadi kesalahan saat menyimpan data. Silakan coba lagi.')->withInput();
         }
     }
@@ -108,6 +111,7 @@ class MemberController extends Controller
                 $profileData['profile_photo_path'] = $request->file('profile_photo')->store('profile-photos', 'public');
             }
 
+            // 4. Gunakan updateOrCreate untuk handle user yang mungkin belum punya profile
             $member->profile()->updateOrCreate(['user_id' => $member->id], $profileData);
 
             DB::commit();
@@ -122,10 +126,12 @@ class MemberController extends Controller
 
     public function destroy(User $member)
     {
+        // Hapus foto profile dari storage terlebih dahulu
         if ($member->profile && $member->profile->profile_photo_path) {
             Storage::disk('public')->delete($member->profile->profile_photo_path);
         }
         
+        // Menghapus user akan otomatis menghapus profile karena onDelete('cascade')
         $member->delete();
 
         return redirect()->route('admin.members.index')->with('success', 'Anggota berhasil dihapus.');

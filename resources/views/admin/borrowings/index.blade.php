@@ -15,6 +15,30 @@
                         </a>
                     </div>
 
+                    <form method="GET" action="{{ route('admin.borrowings.index') }}" class="mb-6">
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <div class="flex-grow">
+                                <x-text-input id="search" name="search" type="text" class="block w-full"
+                                              placeholder="Cari nama peminjam / judul buku..."
+                                              :value="request('search')" />
+                            </div>
+                            
+                            <div>
+                                <select name="status" id="status" class="block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                                    <option value="">Semua Status</option>
+                                    <option value="dipinjam" {{ request('status') == 'dipinjam' ? 'selected' : '' }}>Dipinjam</option>
+                                    <option value="dikembalikan" {{ request('status') == 'dikembalikan' ? 'selected' : '' }}>Dikembalikan</option>
+                                    <option value="terlambat" {{ request('status') == 'terlambat' ? 'selected' : '' }}>Terlambat</option>
+                                </select>
+                            </div>
+
+                            <div class="flex items-center">
+                                <x-primary-button type="submit">Cari</x-primary-button>
+                                <a href="{{ route('admin.borrowings.index') }}" class="ms-3 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">Reset</a>
+                            </div>
+                        </div>
+                    </form>
+
                     @include('partials.flash-messages')
 
                     <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
@@ -58,7 +82,7 @@
                                             </span>
                                         </td>
                                         <td class="py-4 px-6">
-                                            @if($status === 'dipinjam' || $status === 'terlambat')
+                                            @if($borrowing->status === 'dipinjam' || ($isOverdue && $borrowing->status !== 'dikembalikan'))
                                                 <form action="{{ route('admin.borrowings.return', $borrowing) }}" method="POST" onsubmit="return confirm('Konfirmasi pengembalian buku ini?');">
                                                     @csrf
                                                     <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Kembalikan</button>
@@ -71,7 +95,7 @@
                                 @empty
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td colspan="7" class="py-4 px-6 text-center">
-                                            Belum ada data transaksi.
+                                            Belum ada data transaksi yang sesuai.
                                         </td>
                                     </tr>
                                 @endforelse
@@ -79,7 +103,7 @@
                         </table>
                     </div>
                      <div class="mt-4">
-                        {{ $borrowings->links() }}
+                        {{ $borrowings->appends(request()->query())->links() }}
                     </div>
                 </div>
             </div>

@@ -1,100 +1,64 @@
-Berikut ini versi terbaru dari README yang **sudah diperbarui** dengan seluruh fitur tambahan yang telah kamu buat, termasuk: katalog interaktif, halaman akun anggota, dan navigasi dinamis. Saya juga rapikan penulisan Bash, Markdown, dan struktur keseluruhan agar lebih profesional dan mudah dibaca.
 
 ---
-
-````markdown
-# 📚 Sistem Manajemen Perpustakaan Digital v1.1
+# 📚 Sistem Manajemen Perpustakaan Digital v1.0
 
 ![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)
 ![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=for-the-badge&logo=php)
 
-> ✨ _"Aku tidak berilmu; yang berilmu hanyalah DIA. Jika tampak ilmu dariku, itu hanyalah pantulan dari Cahaya-Nya."_
-
----
+✨ Kutipan
+"Aku tidak berilmu; yang berilmu hanyalah DIA. Jika tampak ilmu dariku, itu hanyalah pantulan dari Cahaya-Nya."
 
 ## 🎥 Demo
 ![Demo](./videoujicoba.gif)
 
----
 
 ## 📖 Daftar Isi
 1. [Deskripsi Proyek](#-deskripsi-proyek)
 2. [Fitur Utama](#-fitur-utama)
-3. [Fitur Tambahan v1.1](#-fitur-tambahan-v11)
-4. [Teknologi Digunakan](#-teknologi-digunakan)
-5. [Struktur Database](#-struktur-database)
-6. [Panduan Instalasi](#-panduan-instalasi)
-7. [Panduan Penggunaan](#-panduan-penggunaan)
-8. [Kontribusi](#-kontribusi)
-9. [Penghargaan](#-penghargaan)
-
----
+3. [Teknologi Digunakan](#-teknologi-digunakan)
+4. [Struktur Database](#-struktur-database)
+5. [Panduan Instalasi](#-panduan-instalasi)
+6. [Panduan Penggunaan](#-panduan-penggunaan)
+7. [Testing](#-testing)
+8. [Roadmap](#-roadmap)
+9. [Kontribusi](#-kontribusi)
 
 ## 🌟 Deskripsi Proyek
+Sistem Manajemen Perpustakaan Digital adalah aplikasi web berbasis Laravel yang dirancang untuk:
+- Mengelola koleksi buku digital
+- Memproses transaksi peminjaman
+- Mengelola keanggotaan perpustakaan
+- Menghasilkan laporan statistik
 
-Aplikasi web berbasis Laravel untuk mengelola:
-- Koleksi buku digital
-- Transaksi peminjaman & pengembalian
-- Data anggota
-- Laporan statistik dan denda
-
----
 
 ## ✨ Fitur Utama
 
 ### 🛠️ Fitur Administrasi
-- CRUD Manajemen Buku (termasuk upload cover)
-- Manajemen Kategori dengan relasi
-- Manajemen Anggota dengan verifikasi data
-- Sistem Peminjaman dengan tracking status
-- Perhitungan Denda otomatis
+- **Manajemen Buku** (CRUD lengkap dengan upload cover)
+- **Manajemen Kategori** dengan sistem relasi
+- **Manajemen Anggota** dengan verifikasi data
+- **Sistem Peminjaman** dengan tracking status
+- **Perhitungan Denda** otomatis
 
 ### 📊 Fitur Laporan
 - Statistik peminjaman
-- Ekspor PDF
-- Riwayat Transaksi
+- Ekspor data ke PDF
+- Riwayat transaksi
 
 ### 👤 Manajemen Pengguna
-- Role-based (Admin, Petugas, Anggota)
-- Laravel Breeze untuk autentikasi aman
-- Profil pengguna dapat dikustomisasi
-
----
-
-## 🚀 Fitur Tambahan v1.1
-
-### 📚 Katalog Buku Interaktif untuk Anggota
-- URL: `/member/catalog`
-- Pencarian judul/penulis
-- Filter kategori
-- Tampilan kartu modern + status ketersediaan
-
-### 👤 Halaman Akun Saya
-- Profil lengkap + statistik peminjaman & denda
-- Riwayat Peminjaman Anggota
-- Daftar Denda Pribadi
-- Menggunakan `Auth::id()` untuk personalisasi
-
-### 🧭 Navigasi Dinamis berdasarkan Role
-- Navigasi berbeda untuk Admin / Petugas / Anggota
-- Khusus anggota: link ke “Katalog Buku” dan “Akun Saya”
-- Sinkronisasi tampilan mobile (hamburger) & desktop
-
----
+- Sistem role-based (Admin, Petugas, Anggota)
+- Autentikasi aman dengan Laravel Breeze
+- Profil pengguna yang dapat dikustomisasi
 
 ## 🛠️ Teknologi Digunakan
-
-| Komponen | Teknologi                     |
-|----------|-------------------------------|
-| Backend  | Laravel 12, PHP 8.2+          |
-| Frontend | Blade, Tailwind CSS, Alpine.js|
-| Database | MySQL                         |
-| Lainnya  | Laravel Breeze, DomPDF        |
-
----
+| Komponen | Teknologi |
+|----------|-----------|
+| Backend  | Laravel 12, PHP 8.2+ |
+| Frontend | Blade, Tailwind CSS, Alpine.js |
+| Database | MySQL |
+| Lainnya  | Laravel Breeze, DomPDF |
 
 ## 🗃️ Struktur Database
-
 ![Diagram ERD](https://i.ibb.co/0jQY5Lk/Screenshot-2025-06-14-142345.png)
 
 ```mermaid
@@ -103,102 +67,113 @@ erDiagram
     USERS ||--o{ BORROWINGS : "makes"
     BOOKS ||--o{ BORROWINGS : "included_in"
     BORROWINGS ||--o{ FINES : "generates"
-````
-
----
+```
 
 ## 🚀 Panduan Instalasi
 
 ### Prasyarat
+- PHP 8.2+
+- Composer
+- Node.js 16+
+- MySQL 5.7+
 
-* PHP 8.2+
-* Composer
-* Node.js 16+
-* MySQL 5.7+
+### Langkah-langkah
+1. Clone repositori:
+   ```bash
+   git clone https://github.com/username/repo.git
+   cd repo
+   ```
 
-### Langkah-Langkah Instalasi
+2. Install dependencies:
+   ```bash
+   composer install
+   npm install
+   ```
 
-```bash
-git clone https://github.com/username/repo.git
-cd repo
-
-composer install
-npm install
+Bash
 
 cp .env.example .env
+Generate kunci aplikasi:
+
+Bash
+
 php artisan key:generate
-```
+Konfigurasi database Anda di file .env:
 
-### Konfigurasi Database
+Cuplikan kode
 
-Edit file `.env`:
-
-```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=db_perpustakaan
 DB_USERNAME=root
 DB_PASSWORD=
-```
+Pastikan Anda sudah membuat database db_perpustakaan di server database Anda.
 
-Pastikan database `db_perpustakaan` telah dibuat.
+Jalankan migrasi dan seeder database:
+Perintah ini akan membuat semua tabel dan mengisinya dengan data awal (termasuk akun admin, petugas, dan anggota).
 
-### Migrasi & Seeder
+Bash
 
-```bash
 php artisan migrate --seed
+Buat symbolic link untuk storage:
+Ini penting agar file yang di-upload (seperti sampul buku) bisa diakses.
+
+Bash
+
 php artisan storage:link
-```
+Install dependensi frontend (Node.js):
 
-### Jalankan Aplikasi
+Bash
 
-```bash
-# Terminal 1 - frontend
+npm install
+Jalankan server pengembangan:
+
+Buka satu terminal dan jalankan Vite untuk kompilasi aset:
+Bash
+
 npm run dev
+Buka terminal kedua dan jalankan server aplikasi Laravel:
+Bash
 
-# Terminal 2 - backend
 php artisan serve
-```
+Selesai! Aplikasi Anda sekarang berjalan di http://127.0.0.1:8000.
 
-Akses aplikasi di: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+🔑 Cara Penggunaan
+Setelah instalasi berhasil, Anda dapat login menggunakan akun default yang telah dibuat oleh seeder:
 
----
+Akun Admin:
 
-## 🔑 Panduan Penggunaan
+Email: admin@perpus.com
+Password: password
+Akses: Memiliki akses ke semua fitur manajemen.
 
-### Akun Default
+Akun Petugas:
 
-| Role    | Email                                           | Password |
-| ------- | ----------------------------------------------- | -------- |
-| Admin   | [admin@perpus.com](mailto:admin@perpus.com)     | password |
-| Petugas | [petugas@perpus.com](mailto:petugas@perpus.com) | password |
-| Anggota | [anggota@perpus.com](mailto:anggota@perpus.com) | password |
+Email: petugas@perpus.com
+Password: password
 
----
+Akun Anggota:
 
-## 🤝 Kontribusi
+Email: anggota@perpus.com
+Password: password
+Akses: Dapat login dan melihat dashboard standar.
 
-1. Fork project ini
-2. Buat branch baru (`git checkout -b fitur-baru`)
-3. Commit perubahan (`git commit -m 'Tambah fitur'`)
-4. Push branch (`git push origin fitur-baru`)
+
+# 🤝 Berkontribusi
+
+1. Fork project
+2. Buat branch fitur (`git checkout -b fitur-baru`)
+3. Commit perubahan (`git commit -m 'Tambahkan fitur'`)
+4. Push ke branch (`git push origin fitur-baru`)
 5. Buat Pull Request
 
----
 
 ## ✨ Penghargaan
 
-Dikembangkan dengan ❤ oleh [Alghifari888](https://github.com/Alghifari888)
-
+Dikembangkan dengan ❤ oleh [Alghifari888](https://github.com/Alghifari888)  
 ---
 
-⭐ Jika project ini bermanfaat, beri **star** di GitHub
-🔔 Jangan lupa pantau update fitur-fitur terbaru!
-
-```
-
----
-
-Kalau kamu setuju dengan isi ini, saya bisa bantu kamu ubah langsung ke `README.md` atau bantu pecah lagi jadi file `CHANGELOG.md` juga biar dokumentasi makin lengkap. Mau dilanjutkan ke sana?
+⭐ Jika project ini membantu, mohon beri star di GitHub!  
+🔔 Pantau update terbaru untuk fitur-fitur baru!
 ```

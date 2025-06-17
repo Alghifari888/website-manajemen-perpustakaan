@@ -20,9 +20,6 @@ use App\Http\Controllers\Member\CatalogController;
 */
 
 // Rute Publik (HALAMAN UTAMA)
-// =========================================================================
-// ## BAGIAN INI TELAH DIMODIFIKASI ##
-// =========================================================================
 Route::get('/', function () {
     // Jika sudah login, arahkan ke dashboard. Jika belum, arahkan ke halaman login.
     if (auth()->check()) {
@@ -31,7 +28,6 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-// Rute Dashboard Utama (setelah login)
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 // Rute untuk Halaman Profil Pengguna (bawaan Breeze)

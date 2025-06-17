@@ -44,7 +44,12 @@
                          <x-nav-link :href="route('member.catalog.index')" :active="request()->routeIs('member.catalog.index')">
                             {{ __('Katalog Buku') }}
                         </x-nav-link>
-                         {{-- Tambahkan link untuk 'Akun Saya' di sini nanti --}}
+                        {{-- =================================== --}}
+                        {{-- INI ADALAH LINK YANG DIPERBAIKI --}}
+                        {{-- =================================== --}}
+                         <x-nav-link :href="route('member.account.profile')" :active="request()->routeIs('member.account.*')">
+                            {{ __('Akun Saya') }}
+                        </x-nav-link>
                     @endif
                 </div>
             </div>
@@ -123,6 +128,9 @@
                  <x-responsive-nav-link :href="route('member.catalog.index')" :active="request()->routeIs('member.catalog.index')">
                     {{ __('Katalog Buku') }}
                 </x-responsive-nav-link>
+                 <x-responsive-nav-link :href="route('member.account.profile')" :active="request()->routeIs('member.account.*')">
+                    {{ __('Akun Saya') }}
+                </x-responsive-nav-link>
             @endif
         </div>
 
@@ -139,7 +147,6 @@
 
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">

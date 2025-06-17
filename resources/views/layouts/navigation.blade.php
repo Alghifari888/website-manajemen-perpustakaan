@@ -13,15 +13,22 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    {{-- Tampilkan menu ini jika rolenya admin atau petugas --}}
-                    @if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('petugas'))
+                    {{-- ========================================================== --}}
+                    {{-- ==> BAGIAN INI DIMODIFIKASI MENGGUNAKAN @can DIRECTIVE <== --}}
+                    {{-- ========================================================== --}}
+
+                    {{-- Tampilkan menu ini jika user punya izin 'manage-operations' (Admin & Petugas) --}}
+                    @can('manage-operations')
                         <x-nav-link :href="route('admin.borrowings.index')" :active="request()->routeIs('admin.borrowings.*')">
                             {{ __('Transaksi') }}
                         </x-nav-link>
-                    @endif
+                        <x-nav-link :href="route('admin.fines.index')" :active="request()->routeIs('admin.fines.*')">
+                            {{ __('Denda') }}
+                        </x-nav-link>
+                    @endcan
 
-                    {{-- Tampilkan menu ini hanya untuk Admin --}}
-                    @if (Auth::user()->hasRole('admin'))
+                    {{-- Tampilkan menu ini jika user punya izin 'manage-master-data' (Hanya Admin) --}}
+                    @can('manage-master-data')
                         <x-nav-link :href="route('admin.books.index')" :active="request()->routeIs('admin.books.*')">
                             {{ __('Buku') }}
                         </x-nav-link>
@@ -31,22 +38,16 @@
                         <x-nav-link :href="route('admin.members.index')" :active="request()->routeIs('admin.members.*')">
                             {{ __('Anggota') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('admin.fines.index')" :active="request()->routeIs('admin.fines.*')">
-                            {{ __('Denda') }}
-                        </x-nav-link>
                         <x-nav-link :href="route('admin.reports.index')" :active="request()->routeIs('admin.reports.*')">
                             {{ __('Laporan') }}
                         </x-nav-link>
-                    @endif
+                    @endcan
                     
                     {{-- Tampilkan menu ini hanya untuk Anggota --}}
                     @if (Auth::user()->hasRole('anggota'))
                          <x-nav-link :href="route('member.catalog.index')" :active="request()->routeIs('member.catalog.index')">
                             {{ __('Katalog Buku') }}
                         </x-nav-link>
-                        {{-- =================================== --}}
-                        {{-- INI ADALAH LINK YANG DIPERBAIKI --}}
-                        {{-- =================================== --}}
                          <x-nav-link :href="route('member.account.profile')" :active="request()->routeIs('member.account.*')">
                             {{ __('Akun Saya') }}
                         </x-nav-link>
@@ -61,9 +62,7 @@
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ms-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                             </div>
                         </button>
                     </x-slot>
@@ -75,10 +74,7 @@
 
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
@@ -88,10 +84,7 @@
 
             <div class="-me-2 flex items-center sm:hidden">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /><path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
             </div>
         </div>
@@ -102,33 +95,36 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-             @if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('petugas'))
+
+            @can('manage-operations')
                 <x-responsive-nav-link :href="route('admin.borrowings.index')" :active="request()->routeIs('admin.borrowings.*')">
                     {{ __('Transaksi') }}
                 </x-responsive-nav-link>
-            @endif
-             @if (Auth::user()->hasRole('admin'))
+                <x-responsive-nav-link :href="route('admin.fines.index')" :active="request()->routeIs('admin.fines.*')">
+                    {{ __('Denda') }}
+                </x-responsive-nav-link>
+            @endcan
+
+            @can('manage-master-data')
                 <x-responsive-nav-link :href="route('admin.books.index')" :active="request()->routeIs('admin.books.*')">
                     {{ __('Buku') }}
                 </x-responsive-nav-link>
-                 <x-responsive-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.*')">
+                <x-responsive-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.*')">
                     {{ __('Kategori') }}
                 </x-responsive-nav-link>
-                 <x-responsive-nav-link :href="route('admin.members.index')" :active="request()->routeIs('admin.members.*')">
+                <x-responsive-nav-link :href="route('admin.members.index')" :active="request()->routeIs('admin.members.*')">
                     {{ __('Anggota') }}
-                </x-responsive-nav-link>
-                 <x-responsive-nav-link :href="route('admin.fines.index')" :active="request()->routeIs('admin.fines.*')">
-                    {{ __('Denda') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.reports.index')" :active="request()->routeIs('admin.reports.*')">
                     {{ __('Laporan') }}
                 </x-responsive-nav-link>
-            @endif
-             @if (Auth::user()->hasRole('anggota'))
-                 <x-responsive-nav-link :href="route('member.catalog.index')" :active="request()->routeIs('member.catalog.index')">
+            @endcan
+
+            @if (Auth::user()->hasRole('anggota'))
+                <x-responsive-nav-link :href="route('member.catalog.index')" :active="request()->routeIs('member.catalog.index')">
                     {{ __('Katalog Buku') }}
                 </x-responsive-nav-link>
-                 <x-responsive-nav-link :href="route('member.account.profile')" :active="request()->routeIs('member.account.*')">
+                <x-responsive-nav-link :href="route('member.account.profile')" :active="request()->routeIs('member.account.*')">
                     {{ __('Akun Saya') }}
                 </x-responsive-nav-link>
             @endif

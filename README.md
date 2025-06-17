@@ -39,8 +39,17 @@ Sistem Manajemen Perpustakaan Digital adalah aplikasi web berbasis Laravel yang 
 - **Manajemen Anggota** dengan verifikasi data
 - **Sistem Peminjaman** dengan tracking status
 - **Perhitungan Denda** otomatis
+- 
+### 👤 Fitur Petugas
+- Bisa melihat seluruh daftar riwayat peminjaman dan pengembalian.
+- Bisa mencatat peminjaman baru untuk anggota (+ Catat Peminjaman).
+- Bisa memproses pengembalian buku (Kembalikan), yang juga secara otomatis akan membuat denda jika terlambat.
+  Mengelola Modul Denda:
 
-### 👤 Fitur Member
+- Bisa melihat daftar semua denda yang belum dibayar.
+- Bisa menandai denda sebagai "Lunas" setelah anggota membayarnya.
+
+### 👤 Fitur Member (User)
 - Profil lengkap + statistik peminjaman & denda
 - Riwayat Peminjaman Anggota
 - Daftar Denda Pribadi

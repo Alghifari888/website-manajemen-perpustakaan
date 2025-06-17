@@ -5,7 +5,7 @@
 ![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)
 ![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=for-the-badge&logo=php)
 
-✨ Kutipan
+## ✨ Kutipan
 "Aku tidak berilmu; yang berilmu hanyalah DIA. Jika tampak ilmu dariku, itu hanyalah pantulan dari Cahaya-Nya."
 
 ## 🎥 Demo
@@ -39,6 +39,11 @@ Sistem Manajemen Perpustakaan Digital adalah aplikasi web berbasis Laravel yang 
 - **Manajemen Anggota** dengan verifikasi data
 - **Sistem Peminjaman** dengan tracking status
 - **Perhitungan Denda** otomatis
+
+### 👤 Fitur Member
+- Profil lengkap + statistik peminjaman & denda
+- Riwayat Peminjaman Anggota
+- Daftar Denda Pribadi
 
 ### 📊 Fitur Laporan
 - Statistik peminjaman

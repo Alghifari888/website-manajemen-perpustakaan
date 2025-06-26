@@ -1,4 +1,3 @@
-
 ---
 # 📚 Sistem Manajemen Perpustakaan Digital v1.0
 
@@ -181,11 +180,6 @@ Akses: Dapat login dan melihat dashboard standar.
 3. Commit perubahan (`git commit -m 'Tambahkan fitur'`)
 4. Push ke branch (`git push origin fitur-baru`)
 5. Buat Pull Request
-
-
-## ✨ Penghargaan
-
-Dikembangkan dengan ❤ oleh [Alghifari888](https://github.com/Alghifari888)  
 ---
 
 ⭐ Jika project ini membantu, mohon beri star di GitHub!  

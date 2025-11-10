@@ -1,14 +1,17 @@
-# 📚 Sistem Manajemen Perpustakaan Digital v1.0
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)
-![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=for-the-badge&logo=php)
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+</p>
+
+# 📚 Sistem Manajemen Perpustakaan Digital v1.0
+Sistem Manajemen Perpustakaan Digital adalah perangkat lunak yang dirancang untuk mengelola
+semua fungsi perpustakaan secara digital, mulai dari mengelola koleksi hingga transaksi anggota.
 
 ## ✨ Kutipan
 "Aku tidak berilmu; yang berilmu hanyalah DIA. Jika tampak ilmu dariku, itu hanyalah pantulan dari Cahaya-Nya."
-
-## 🎥 Demo
-![Demo](./videoujicoba.gif)
-
 
 ## 📖 Daftar Isi
 1. [Deskripsi Proyek](#-deskripsi-proyek)
@@ -20,6 +23,9 @@
 7. [Testing](#-testing)
 8. [Roadmap](#-roadmap)
 9. [Kontribusi](#-kontribusi)
+
+## 🎥 Demo
+![Demo](./videoujicoba.gif)
 
 ## 🌟 Deskripsi Proyek
 Sistem Manajemen Perpustakaan Digital adalah aplikasi web berbasis Laravel yang dirancang untuk:
